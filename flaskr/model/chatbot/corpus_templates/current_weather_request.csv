@@ -1,0 +1,36 @@
+What's the weather like in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather like in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather like in {location} at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather in {location} at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like in {location} at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather in {location} at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather like right now in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather like currently in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather like at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather right now in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather currently in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What's the weather in {location} like at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like right now in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like currently in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather like at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather right now in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather currently in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+What is the weather in {location} like at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How's the weather in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How's the weather in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How's the weather at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How's the weather in {location} like at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How's the weather in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How is the weather in {location} right now?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How is the weather in {location} currently?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How is the weather at the moment in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How is the weather in {location} like at the moment?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.
+How is the weather in {location}?, #1# It is currently {weather_description} in {output-location} and the temperature is {temp} °C.

@@ -25,6 +25,9 @@ API Keys:
 Once all the pre-requisites are installed or setup please navigate to your project folder `C:\..\..\GoTravelBot>` and execute the
 following commands:
 
+> [!NOTE]
+> You may need to execute these as administrator - I encountered some difficulties with permissions.
+
 1. Donwload the python modules:
 
 ```console
@@ -38,7 +41,6 @@ python -m flaskr.controller.app
 ```
 
 3. Navigate to the [Go Travel Bot Example Site](http://localhost/index)
-
 
 4. Try some generic greetings or some more complex examples:
 

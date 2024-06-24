@@ -2,7 +2,6 @@ from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer, ListTrainer
 from chatterbot.response_selection import get_first_response
 from chatterbot.comparisons import SpacySimilarity
-import pandas as pd
 from spacy.cli.download import download
 from spacy.util import load_model
 import os

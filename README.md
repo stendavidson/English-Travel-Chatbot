@@ -26,7 +26,7 @@ Once all the pre-requisites are installed or setup please navigate to your proje
 following commands:
 
 > [!NOTE]
-> You may need to execute these as administrator - I encountered some difficulties with permissions.
+> You will need to execute these as administrator - I encountered some difficulties with permissions.
 
 1. Donwload the python modules:
 

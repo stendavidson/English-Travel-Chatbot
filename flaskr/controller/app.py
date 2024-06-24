@@ -2,9 +2,10 @@
 from datetime import datetime, timezone, timedelta
 from json import dumps
 import re
-from flask import Flask, Response, render_template
+from flask import Flask, Response, redirect, render_template
 import numpy as np
 import pandas as pd
+from werkzeug.wrappers.response import Response
 
 from flaskr.model.exceptions.InvalidTemplateException import InvalidTemplateException
 from flaskr.model.exceptions.SQLServerError import SQLServerError
@@ -167,8 +168,10 @@ def generate_default_responses() -> dict:
 #################################################################################################
 
 
-
+# Initialize flask and set folder paths
 app = Flask(__name__)
+app.template_folder = "../view/templates"
+app.static_folder = "../view/static"
 
 
 # Initialize SQL Connector
@@ -678,17 +681,14 @@ def current_news_response(response : str) -> Response :
 @app.route("/data/update", methods=["POST"])
 def update() -> Response :
     """
-    This endpoint forces the database to refresh.
-
-    Parameters:
-        user_input (str): The user's plain text input.
+    This endpoint forces the most recent data to be retrieved and the
+    database to be updated.
     """
 
     update_news_data()
     update_news_data()
 
     return Response(status=204)
-
 
 
 
@@ -704,6 +704,7 @@ def chatbot(user_input : str) -> Response :
     
     # Get response from chatbot
     app.bot = GoTravelBot(BOT_DATABASE, app.data)
+
     response : str = app.bot.get_response(user_input)
     
     # Determine the template type
@@ -751,9 +752,28 @@ def chatbot(user_input : str) -> Response :
 
 
 
+@app.route("/", methods=["GET","POST"])
+def domain() -> Response:
+    """
+    Redirects the domain component of the URL to the home / index page.
+    """
+    return redirect("/index")
+
+
+
+@app.route("/index", methods=["GET","POST"])
+def index() -> str:
+    """
+    This is the default home / index page of this site - it is
+    essentially just a demo site of the Go Travel Bot.
+    """
+
+    return render_template("index.html")
+
+
 if __name__ == "__main__" :
 
-    app.run("localhost", "80")
+    app.run("localhost", "80", debug=True)
 
 
 

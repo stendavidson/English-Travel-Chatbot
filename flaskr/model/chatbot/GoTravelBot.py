@@ -80,8 +80,6 @@ class GoTravelBot :
         base_trainer = ChatterBotCorpusTrainer(self.bot)
         base_trainer.train("chatterbot.corpus.english.greetings")
 
-        #list_trainer = ListTrainer(self.bot)
-
         # The model is then trained on a corpus of business related prompts to handle
         # a broader intersection of requests.
         for converation in training_data :

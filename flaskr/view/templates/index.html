@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta lang="en"/>
+        <meta name="description" content="This website is a demonstration of the Go Travel Bot."/>
+        <title>Go Travel Bot</title>
+        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles/styles.css') }}"/>
+    </head>
+    <body>
+        <div class="chatbot"> 
+            <div id="top-ribbon">
+                <button id="reload" type="button" onclick="update(event)">Update Database</button>
+                <h1>Go Travel Bot</h1>
+            </div>
+            <div id="chat-region">
+
+            </div>
+            <form id="bottom-ribbon" onsubmit="getResponse(event)">
+                <input id="user-input" name="user-input" type="text" placeholder="Please enter message here...">
+                <button class="send" onclick="getResponse(event)">
+                    Send <div id="triangle"></div>
+                </button>
+            </form>
+        </div>
+    </body>
+</html>

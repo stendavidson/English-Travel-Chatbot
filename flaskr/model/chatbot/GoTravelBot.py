@@ -91,6 +91,14 @@ class GoTravelBot :
 
     @with_type_validation(object, str)
     def get_response(self, input_text : str) -> str :
+        """
+        This function determines the best response based upon varying degrees of
+        certainty. This provides a wider range of functionality and assists the user
+        in understanding the chatbot's functionality better.
+
+        Parameters:
+            input_text (str) : The user's input
+        """
         
         # This function should not be used prior to training.
         if not self.trained :

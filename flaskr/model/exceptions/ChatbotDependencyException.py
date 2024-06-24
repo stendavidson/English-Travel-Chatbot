@@ -18,7 +18,7 @@ class ChatbotDependencyException(RuntimeError) :
         This method displays the exception's cause.
         """
 
-        return f"Exception the chatbot could not load all of its dependencies"
+        return f"Exception the chatbot could not load all of its dependencies."
     
 
     def __repr__(self) -> str :

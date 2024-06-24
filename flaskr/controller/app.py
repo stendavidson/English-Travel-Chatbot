@@ -7,8 +7,14 @@ import numpy as np
 import pandas as pd
 from werkzeug.wrappers.response import Response
 
+from flaskr.model.exceptions.ChatbotDependencyException import ChatbotDependencyException
+from flaskr.model.exceptions.CurrentNewsRequestException import CurrentNewsRequestException
+from flaskr.model.exceptions.InvalidORMClassException import InvalidORMClassException
 from flaskr.model.exceptions.InvalidTemplateException import InvalidTemplateException
+from flaskr.model.exceptions.OpenWeatherRequestException import OpenWeatherRequestException
+from flaskr.model.exceptions.SQLRequestException import SQLRequestException
 from flaskr.model.exceptions.SQLServerError import SQLServerError
+from flaskr.model.exceptions.UntrainedChatbotException import UntrainedChatbotException
 from flaskr.model.utils.validation_utils import with_type_validation
 
 from ..model.chatbot.GoTravelBot import GoTravelBot
@@ -187,6 +193,11 @@ except SQLServerError as e :
     print(f"{str(e)} Application exiting...")
     exit(1)
 
+except Exception :
+
+    print("Something unexpected went wrong. Application exiting...")
+    exit(1)
+
 
 # The bot is trained at application start up
 try :
@@ -209,6 +220,17 @@ try :
 except InvalidTemplateException as e :
 
     print(f"{str(e)} Application exiting...")
+    exit(1)
+
+except UntrainedChatbotException as e :
+
+    print(f"{str(e)} Application exiting...")
+    exit(1)
+
+except Exception :
+
+    print("Something unexpected went wrong. Application exiting...")
+    exit(1)
 
 
 
@@ -218,6 +240,90 @@ except InvalidTemplateException as e :
 ###################################### Flask Error Handlers #####################################
 #################################################################################################
 
+"""
+NOTE: only exceptions that the program can be reasonably be expected to recover from have
+been caught and handled using @app.errorhandler functions.
+"""
+
+
+@app.errorhandler(404)
+def resource_not_found() -> Response:
+    """
+    Error handling function defines a specific response to HTTP error
+    code 404.
+    """
+
+    return Response(dumps({"error" : "Error: resource could not be found."}), status=404)
+
+
+
+@app.errorhandler(CurrentNewsRequestException)
+def news_request_exception_handler(e : CurrentNewsRequestException) -> Response:
+    """
+    Error handling function defines a specific response when news data
+    fails to be retrieved.
+    """
+
+    error_message : str = f"Server critical error ocurred: {e.__str__()}. "\
+                           "If the issue persists please contact the server admin."
+
+    return Response(dumps({"error" : error_message}), status=500)
+
+
+
+@app.errorhandler(OpenWeatherRequestException)
+def weather_request_exception_handler(e : OpenWeatherRequestException) -> Response:
+    """
+    Error handling function defines a specific response when an weather
+    request is made.
+    """
+
+    error_message : str = f"Server critical error ocurred: {e.__str__()}. "\
+                           "If the issue persists please contact the server admin."
+
+    return Response(dumps({"error" : error_message}), status=500)
+
+
+
+@app.errorhandler(InvalidORMClassException)
+def invalid_orm_exception_handler(e : InvalidORMClassException) -> Response:
+    """
+    Error handling function defines a specific response when an invalid
+    orm class is requested.
+    """
+
+    error_message : str = f"Server critical error ocurred: {e.__str__()}. "\
+                           "If the issue persists please contact the server admin."
+
+    return Response(dumps({"error" : error_message}), status=500)
+
+
+
+@app.errorhandler(SQLRequestException)
+def weather_request_exception_handler(e : SQLRequestException) -> Response:
+    """
+    Error handling function defines a specific response when an SQL action
+    fails to execute and throws an error.
+    """
+
+    error_message : str = f"Server critical error ocurred: {e.__str__()}. "\
+                           "If the issue persists please contact the server admin."
+
+    return Response(dumps({"error" : error_message}), status=500)
+
+
+
+@app.errorhandler(SQLServerError)
+def weather_request_exception_handler(e : SQLServerError) -> Response:
+    """
+    Error handling function defines a specific response when the SQL
+    database fails.
+    """
+
+    error_message : str = f"Server critical error ocurred: {e.__str__()}. "\
+                           "If the issue persists please contact the server admin."
+
+    return Response(dumps({"error" : error_message}), status=500)
 
 
 
@@ -482,6 +588,7 @@ def date_check_weather() -> bool:
 #################################################################################################
 
 
+
 @with_type_validation(str)
 def current_weather_response(response : str) -> Response :
     """
@@ -702,7 +809,7 @@ def chatbot(user_input : str) -> Response :
         user_input (str): The user's plain text input.
     """
     
-    # Get response from chatbot
+    # Get response from chatbot - re-intialize may help bot context
     app.bot = GoTravelBot(BOT_DATABASE, app.data)
 
     response : str = app.bot.get_response(user_input)
@@ -771,12 +878,8 @@ def index() -> str:
     return render_template("index.html")
 
 
+# Run flask app
 if __name__ == "__main__" :
 
-    app.run("localhost", "80", debug=True)
-
-
-
-
-
+    app.run("localhost", "80")
 

@@ -26,7 +26,7 @@ async function update(){
 
 
 /**
- * Function calls the backend to force update the database.
+ * Function calls the backend and retrives chatterbot response
  */
 async function getResponse(event){
 
